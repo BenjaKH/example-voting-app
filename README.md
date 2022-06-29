@@ -1,3 +1,5 @@
+Adding this line to test branch rules
+
 Example Voting App
 =========
 
