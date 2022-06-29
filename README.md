@@ -1,6 +1,4 @@
-Adding this line to test branch rules
-
-this line is to test the rule
+Rermoved lines for lab
 
 Example Voting App
 =========
