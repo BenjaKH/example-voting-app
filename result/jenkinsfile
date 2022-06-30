@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    
+    tools{
+        nodeJS 'NodeJS 18.4.0'
+    }
+    stages{
+		stage("build"){
+			when{
+				changeset "**/result/**"
+				}
+			steps{
+				echo 'Compiling worker app..'
+				dir('worker'){
+					sh 'npm install'
+					}
+				}
+			}
+            stage("test"){
+                when{
+                    changeset "**/result/**"
+                }
+                steps{
+                    echo 'Running Unit Tets on worker app..'
+                    dir('result'){
+                        sh 'npm install'
+						sh 'npm test'
+						}    
+  			}
+ 		}
+}
+}
