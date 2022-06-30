@@ -25,8 +25,25 @@ pipeline {
                     dir('result'){
                         sh 'npm install'
 						sh 'npm test'
-						}    
-  			}
- 		}
-}
+                    }
+                }
+            }
+            stage("package"){
+                when{
+                    branch 'master'
+                        changeset "**/result/**"
+                }
+                steps{
+                    echo 'Packaging result app'
+                    dir('result'){
+                        sh 'mvn package -DskipTests' 
+                        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true  }
+   }
+  }
+ }
+  post{
+   always{
+    echo 'Building multibranch pipeline for worker is completed..'
+  }
+ }
 }
