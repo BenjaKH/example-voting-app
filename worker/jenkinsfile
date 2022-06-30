@@ -25,7 +25,7 @@ pieline {
             }
         }
     }
-    stage{"package"){
+    stage("package"){
         when{
             branch 'master'
             changeset "**/worker/**"
