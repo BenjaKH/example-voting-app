@@ -36,8 +36,8 @@ pipeline {
                 steps{
                     echo 'Packaging result app'
                     dir('result'){
-                        sh 'mvn package -DskipTests' 
-                        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true  }
+                        sh 'npm install'
+						sh 'npm package'  }
    }
   }
  }
