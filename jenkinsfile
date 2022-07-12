@@ -75,8 +75,6 @@
           }
       }
     }
-  }
-  stages {
     stage ('result build') {
       when {
         changeset '**/result/**'
@@ -140,8 +138,6 @@
             }
          }
   }
-  }
-     stages {
         stage("vote build") {
         agent {
           docker {
