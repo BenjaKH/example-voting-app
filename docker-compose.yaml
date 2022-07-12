@@ -28,9 +28,12 @@ services:
       - "db-data:/var/lib/postgresql/data"
     networks:
       - instavote
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
 
   result:
     image: benjakh/result:latest
+    build: ./result
     ports:
       - 5050:4000
     depends_on:
@@ -40,6 +43,7 @@ services:
 
   worker:
     image: benjakh/worker:latest
+    build: ./worker
     depends_on:
       - redis
       - db
