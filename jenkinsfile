@@ -80,7 +80,7 @@
     stage ('result build') {
       agent {
         docker {
-          image 'node:8.16.0-alpine'
+          image 'node:alpine3.15'
         }
       }
         when {
@@ -96,7 +96,7 @@
       stage("result test") {
         agent {
           docker {
-            image 'node:8.16.0-alpine'
+            image 'node:alpine3.15'
           }
         }
         when {
@@ -113,7 +113,7 @@
       stage("result package") {
         agent {
           docker {
-            image 'node:8.16.0-alpine'
+            image 'node:alpine3.15'
           }
         }
         when {
@@ -131,7 +131,7 @@
   stage('result docker-package') {
     agent {
       docker {
-        image 'node:8.16.0-alpine'
+        image 'node:alpine3.15'
         }
       }
     when { 
